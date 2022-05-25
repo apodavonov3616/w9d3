@@ -22,9 +22,19 @@ class FollowToggle {
         if (this.followState === 'followed') {
             this.followState = 'unfollowing';
             this.render()
+            $.ajax({
+                url: `/users/:id/follow`,
+                dataType: 'json',
+                method: 'DELETE'
+              })
         } else if (this.followState = 'unfollowed') {
             this.followState = 'following';
             this.render();
+            $.ajax({
+                url: `/users/:id/follow`,
+                dataType: 'json',
+                method: 'POST'
+              })
         }
 
     }
